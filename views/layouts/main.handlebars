@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AppCenar - {{title}}</title>
+  <link rel="stylesheet" href="/css/main.css">
+  {{#if customCSS}}
+    <link rel="stylesheet" href="/css/{{customCSS}}.css">
+  {{/if}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  {{#if user}}
+    <header class="header">
+      <div class="container header-container">
+        <a href="/" class="logo">
+          <img src="/img/logo.svg" alt="AppCenar Logo">
+          <h1>AppCenar</h1>
+        </a>
+        
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-menu">
+          {{#if (eq user.role "client")}}
+            <li><a href="/client/home" class="nav-link {{#if (eq active 'home')}}active{{/if}}">Inicio</a></li>
+            <li><a href="/client/orders" class="nav-link {{#if (eq active 'orders')}}active{{/if}}">Mis Pedidos</a></li>
+            <li><a href="/client/favorites" class="nav-link {{#if (eq active 'favorites')}}active{{/if}}">Favoritos</a></li>
+            <li><a href="/client/address" class="nav-link {{#if (eq active 'address')}}active{{/if}}">Direcciones</a></li>
+          {{else if (eq user.role "commerce")}}
+            <li><a href="/commerce/home" class="nav-link {{#if (eq active 'home')}}active{{/if}}">Inicio</a></li>
+            <li><a href="/commerce/products" class="nav-link {{#if (eq active 'products')}}active{{/if}}">Productos</a></li>
+            <li><a href="/commerce/categories" class="nav-link {{#if (eq active 'categories')}}active{{/if}}">Categorías</a></li>
+            <li><a href="/commerce/orders" class="nav-link {{#if (eq active 'orders')}}active{{/if}}">Pedidos</a></li>
+          {{else if (eq user.role "delivery")}}
+            <li><a href="/delivery/home" class="nav-link {{#if (eq active 'home')}}active{{/if}}">Inicio</a></li>
+            <li><a href="/delivery/orders" class="nav-link {{#if (eq active 'orders')}}active{{/if}}">Pedidos</a></li>
+          {{else if (eq user.role "admin")}}
+            <li><a href="/admin/dashboard" class="nav-link {{#if (eq active 'dashboard')}}active{{/if}}">Dashboard</a></li>
+            <li><a href="/admin/users" class="nav-link {{#if (eq active 'users')}}active{{/if}}">Usuarios</a></li>
+            <li><a href="/admin/commerces" class="nav-link {{#if (eq active 'commerces')}}active{{/if}}">Comercios</a></li>
+            <li><a href="/admin/commerce-types" class="nav-link {{#if (eq active 'commerce-types')}}active{{/if}}">Tipos de Comercio</a></li>
+            <li><a href="/admin/configuration" class="nav-link {{#if (eq active 'configuration')}}active{{/if}}">Configuración</a></li>
+          {{/if}}
+        </ul>
+        
+        <div class="user-menu">
+          <button class="user-menu-btn">
+            {{#if user.profileImage}}
+              <img src="{{user.profileImage}}" alt="{{user.name}}">
+            {{else}}
+              <i class="fas fa-user-circle"></i>
+            {{/if}}
+            <span>{{user.name}}</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          
+          <div class="user-dropdown">
+            {{#if (eq user.role "client")}}
+              <a href="/client/profile" class="user-dropdown-item">Mi Perfil</a>
+            {{else if (eq user.role "commerce")}}
+              <a href="/commerce/profile" class="user-dropdown-item">Mi Perfil</a>
+            {{else if (eq user.role "delivery")}}
+              <a href="/delivery/profile" class="user-dropdown-item">Mi Perfil</a>
+            {{else if (eq user.role "admin")}}
+              <a href="/admin/profile" class="user-dropdown-item">Mi Perfil</a>
+            {{/if}}
+            <a href="/logout" class="user-dropdown-item danger">Cerrar Sesión</a>
+          </div>
+        </div>
+      </div>
+    </header>
+  {{/if}}
+
+  <main class="container">
+    {{#if success_msg}}
+      <div class="alert alert-success">
+        {{success_msg}}
+      </div>
+    {{/if}}
+    
+    {{#if error_msg}}
+      <div class="alert alert-danger">
+        {{error_msg}}
+      </div>
+    {{/if}}
+    
+    {{{body}}}
+  </main>
+
+  {{#if user}}
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-logo">
+          <img src="/img/logo.svg" alt="AppCenar Logo">
+          <p>La mejor plataforma para pedir comida a domicilio.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h3>Enlaces</h3>
+          <a href="/" class="footer-link">Inicio</a>
+          <a href="/about" class="footer-link">Acerca de</a>
+          <a href="/contact" class="footer-link">Contacto</a>
+        </div>
+        
+        <div class="footer-links">
+          <h3>Legal</h3>
+          <a href="/terms" class="footer-link">Términos y Condiciones</a>
+          <a href="/privacy" class="footer-link">Política de Privacidad</a>
+        </div>
+      </div>
+      
+      <div class="container footer-bottom">
+        <p>&copy; {{currentYear}} AppCenar. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+  {{/if}}
+
+  <script src="/js/main.js"></script>
+  {{#if customJS}}
+    <script src="/js/{{customJS}}.js"></script>
+  {{/if}}
+</body>
+</html>
