@@ -1,0 +1,61 @@
+<div class="p-6 max-w-4xl mx-auto text-white">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-petrel">Editar producto</h1>
+    <a href="/comercio/productos" class="btn bg-petrel hover:bg-bluedart text-white rounded-lg py-2 px-4 flex items-center gap-2">
+      <i class="fa fa-arrow-left"></i> Volver
+    </a>
+  </div>
+
+  <div class="bg-benthic rounded-xl shadow-lg p-6">
+    <form action="/comercio/productos/editar/<%= producto.id %>" method="POST" enctype="multipart/form-data" class="space-y-4">
+      
+      <div>
+        <label for="nombre" class="block text-sm font-medium text-gray-300 mb-1">Nombre del producto</label>
+        <input type="text" id="nombre" name="nombre" value="<%= producto.nombre %>" class="w-full rounded-lg border border-petrel bg-transparent text-white p-3 focus:outline-none focus:ring-2 focus:ring-bluedart" required />
+      </div>
+
+      <div>
+        <label for="descripcion" class="block text-sm font-medium text-gray-300 mb-1">Descripción</label>
+        <textarea id="descripcion" name="descripcion" rows="3" class="w-full rounded-lg border border-petrel bg-transparent text-white p-3 focus:outline-none focus:ring-2 focus:ring-bluedart" required><%= producto.descripcion %></textarea>
+      </div>
+
+      <div>
+        <label for="precio" class="block text-sm font-medium text-gray-300 mb-1">Precio (RD$)</label>
+        <input type="number" id="precio" name="precio" step="0.01" min="0" value="<%= producto.precio %>" class="w-full rounded-lg border border-petrel bg-transparent text-white p-3 focus:outline-none focus:ring-2 focus:ring-bluedart" required />
+      </div>
+
+      <div>
+        <label for="categoriaId" class="block text-sm font-medium text-gray-300 mb-1">Categoría</label>
+        <select id="categoriaId" name="categoriaId" class="w-full rounded-lg border border-petrel bg-transparent text-white p-3 focus:outline-none focus:ring-2 focus:ring-bluedart" required>
+          <option value="">Seleccione una categoría</option>
+          <% categorias.forEach(categoria => { %>
+            <option value="<%= categoria.id %>" <%= producto.categoriaId == categoria.id ? 'selected' : '' %>><%= categoria.nombre %></option>
+          <% }); %>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-300 mb-1">Imagen actual</label>
+        <div class="mb-3">
+          <img src="<%= producto.imagen %>" alt="<%= producto.nombre %>" class="rounded-lg" style="max-height: 200px;">
+        </div>
+        <label for="imagen" class="block text-sm font-medium text-gray-300 mb-1">Nueva imagen (opcional)</label>
+        <input type="file" id="imagen" name="imagen" class="w-full rounded-lg border border-petrel bg-transparent text-white p-3 focus:outline-none focus:ring-2 focus:ring-bluedart" />
+        <small class="text-gray-400 block mt-1">Deja este campo vacío si no deseas cambiar la imagen actual.</small>
+      </div>
+
+      <div class="pt-4">
+        <button type="submit" class="w-full py-3 rounded-lg bg-bluedart hover:bg-petrel text-white font-semibold transition">Actualizar producto</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  .bg-benthic { background-color: #151e27; }
+  .text-petrel { color: #264653; }
+  .bg-petrel { background-color: #264653; }
+  .bg-bluedart { background-color: #2a9d8f; }
+  .hover\:bg-bluedart:hover { background-color: #2a9d8f; }
+  .hover\:bg-petrel:hover { background-color: #264653; }
+</style>

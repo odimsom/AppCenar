@@ -1,0 +1,135 @@
+<div class="container mx-auto mt-6 px-4 max-w-3xl">
+  <h1 class="text-3xl font-bold mb-6 text-petrel">Editar Administrador</h1>
+
+  <form
+    action="/admin/administradores/editar/<%= admin.id %>"
+    method="POST"
+    class="bg-benthic p-6 rounded-lg shadow-lg text-white"
+  >
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label
+          class="block mb-2 font-semibold"
+          for="nombre"
+          >Nombre</label
+        >
+        <input
+          type="text"
+          name="nombre"
+          id="nombre"
+          class="w-full rounded-md px-4 py-2 text-white bg-kuretake input-backdrop-blur border border-gray-600 focus:outline-none focus:ring-2 focus:ring-petrel"
+          value="<%= admin.nombre %>"
+          required
+        />
+      </div>
+
+      <div>
+        <label
+          class="block mb-2 font-semibold"
+          for="apellido"
+          >Apellido</label
+        >
+        <input
+          type="text"
+          name="apellido"
+          id="apellido"
+          class="w-full rounded-md px-4 py-2 text-white bg-kuretake input-backdrop-blur border border-gray-600 focus:outline-none focus:ring-2 focus:ring-petrel"
+          value="<%= admin.apellido %>"
+          required
+        />
+      </div>
+
+      <div>
+        <label
+          class="block mb-2 font-semibold"
+          for="cedula"
+          >Cédula</label
+        >
+        <input
+          type="text"
+          name="cedula"
+          id="cedula"
+          class="w-full rounded-md px-4 py-2 text-white bg-kuretake input-backdrop-blur border border-gray-600 focus:outline-none focus:ring-2 focus:ring-petrel"
+          value="<%= admin.cedula %>"
+          required
+        />
+      </div>
+
+      <div>
+        <label
+          class="block mb-2 font-semibold"
+          for="correo"
+          >Correo</label
+        >
+        <input
+          type="email"
+          name="correo"
+          id="correo"
+          class="w-full rounded-md px-4 py-2 text-white bg-kuretake input-backdrop-blur border border-gray-600 focus:outline-none focus:ring-2 focus:ring-petrel"
+          value="<%= admin.correo %>"
+          required
+        />
+      </div>
+
+      <div>
+        <label
+          class="block mb-2 font-semibold"
+          for="usuario"
+          >Usuario</label
+        >
+        <input
+          type="text"
+          name="usuario"
+          id="usuario"
+          class="w-full rounded-md px-4 py-2 text-white bg-kuretake input-backdrop-blur border border-gray-600 focus:outline-none focus:ring-2 focus:ring-petrel"
+          value="<%= admin.usuario %>"
+          required
+        />
+      </div>
+
+      <div>
+        <label
+          class="block mb-2 font-semibold"
+          for="password"
+          >Nueva Contraseña (opcional)</label
+        >
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="w-full rounded-md px-4 py-2 text-white bg-kuretake input-backdrop-blur border border-gray-600 focus:outline-none focus:ring-2 focus:ring-petrel"
+        />
+      </div>
+
+      <div>
+        <label
+          class="block mb-2 font-semibold"
+          for="confirmarPassword"
+          >Confirmar Contraseña</label
+        >
+        <input
+          type="password"
+          name="confirmarPassword"
+          id="confirmarPassword"
+          class="w-full rounded-md px-4 py-2 text-white bg-kuretake input-backdrop-blur border border-gray-600 focus:outline-none focus:ring-2 focus:ring-petrel"
+        />
+      </div>
+    </div>
+
+    <div class="mt-8 flex items-center gap-4">
+      <button
+        type="submit"
+        class="bg-green-700 hover:bg-green-800 transition px-6 py-3 rounded-lg font-semibold flex items-center gap-2"
+      >
+        <i class="fa fa-save"></i> Guardar Cambios
+      </button>
+
+      <a
+        href="/admin/administradores"
+        class="bg-gray-600 hover:bg-gray-700 transition px-6 py-3 rounded-lg font-semibold"
+      >
+        Cancelar
+      </a>
+    </div>
+  </form>
+</div>

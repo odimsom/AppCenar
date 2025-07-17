@@ -1,0 +1,86 @@
+<div class="p-6 max-w-7xl mx-auto text-white">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-4xl font-bold text-petrel">Productos</h1>
+    <a
+      href="/comercio/productos/crear"
+      class="btn bg-bluedart hover:bg-petrel text-white rounded-lg py-2 px-4 flex items-center gap-2"
+    >
+      <i class="fa fa-plus"></i> Nuevo producto
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <% if (productos && productos.length> 0) { %> <%
+    productos.forEach(producto=> { %>
+    <div class="bg-benthic rounded-xl shadow-lg overflow-hidden flex flex-col">
+      <img
+        src="<%= producto.imagen %>"
+        alt="<%= producto.nombre %>"
+        class="h-48 w-full object-cover"
+      />
+      <div class="p-4 flex-grow flex flex-col">
+        <h5 class="text-xl font-semibold mb-2 text-petrel">
+          <%= producto.nombre %>
+        </h5>
+        <p class="text-gray-300 flex-grow mb-3"><%= producto.descripcion %></p>
+        <p class="text-bluedart font-bold mb-1 text-lg">
+          RD$ <%= producto.precio.toFixed(2) %>
+        </p>
+        <p class="text-gray-400 text-sm flex items-center gap-1 mb-3">
+          <i class="fa fa-tag"></i>
+          <%= producto.categoria ? producto.categoria.nombre : 'Sin categoría'
+          %>
+        </p>
+        <div class="mt-auto flex justify-between">
+          <a
+            href="/comercio/productos/editar/<%= producto.id %>"
+            class="btn btn-outline-bluedart px-3 py-1 rounded-md text-bluedart hover:bg-bluedart hover:text-white transition flex items-center gap-1"
+          >
+            <i class="fa fa-edit"></i> Editar
+          </a>
+          <a
+            href="/comercio/productos/eliminar/<%= producto.id %>"
+            class="btn btn-outline-danger px-3 py-1 rounded-md text-red-500 hover:bg-red-600 hover:text-white transition flex items-center gap-1"
+          >
+            <i class="fa fa-trash"></i> Eliminar
+          </a>
+        </div>
+      </div>
+    </div>
+    <% }) %> <% } else { %>
+    <div class="col-span-full">
+      <div class="alert bg-blue-900 text-blue-300 rounded-lg p-4 text-center">
+        No tienes productos registrados. Crea un nuevo producto para comenzar a
+        vender.
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<style>
+  .bg-benthic {
+    background-color: #151e27;
+  }
+
+  .text-petrel {
+    color: #264653;
+  }
+
+  .bg-petrel {
+    background-color: #264653;
+  }
+
+  .bg-bluedart {
+    background-color: #2a9d8f;
+  }
+
+  .btn-outline-bluedart {
+    border: 2px solid #2a9d8f;
+  }
+
+  .btn-outline-bluedart:hover {
+    background-color: #2a9d8f;
+    color: white;
+  }
+</style>

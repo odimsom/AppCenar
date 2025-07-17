@@ -1,0 +1,83 @@
+<div class="p-6 max-w-4xl mx-auto text-white">
+  <h1 class="text-3xl font-bold text-petrel mb-6">Pedidos recientes</h1>
+
+  <% if (pedidos.length === 0) { %>
+  <div
+    class="bg-benthic p-4 rounded-lg border border-gray-700 text-center text-gray-400"
+  >
+    No hay pedidos recientes aún.
+  </div>
+  <% } else { %>
+  <div
+    class="overflow-x-auto rounded-lg shadow-lg bg-benthic border border-gray-700"
+  >
+    <table class="w-full text-left table-auto">
+      <thead class="bg-petrel">
+        <tr>
+          <th class="px-4 py-3">#</th>
+          <th class="px-4 py-3">Cliente</th>
+          <th class="px-4 py-3">Fecha</th>
+          <th class="px-4 py-3">Estado</th>
+          <th class="px-4 py-3">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% pedidos.forEach((pedido, index) => { %>
+        <tr class="border-b border-gray-700 hover:bg-bluedart/20 transition">
+          <td class="px-4 py-3 align-middle"><%= index + 1 %></td>
+          <td class="px-4 py-3 align-middle">
+            <%= pedido.cliente?.nombre || 'Cliente eliminado' %>
+          </td>
+          <td class="px-4 py-3 align-middle">
+            <%= new Date(pedido.createdAt).toLocaleString() %>
+          </td>
+          <td class="px-4 py-3 align-middle">
+            <span
+              class="inline-block px-2 py-1 rounded text-xs font-semibold <%= pedido.estado === 'pendiente' ? 'bg-yellow-500 text-black' : pedido.estado === 'en proceso' ? 'bg-blue-400 text-white' : 'bg-green-600 text-white' %>"
+            >
+              <%= pedido.estado %>
+            </span>
+          </td>
+          <td class="px-4 py-3 align-middle">
+            <a
+              href="/comercio/pedidos/<%= pedido.id %>"
+              class="btn bg-bluedart hover:bg-petrel text-white rounded px-3 py-1 text-sm transition"
+            >
+              Ver detalle
+            </a>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+  <% } %>
+</div>
+
+<style>
+  .bg-benthic {
+    background-color: #151e27;
+  }
+  .text-petrel {
+    color: #264653;
+  }
+  .bg-petrel {
+    background-color: #264653;
+  }
+  .bg-bluedart {
+    background-color: #2a9d8f;
+  }
+  .hover\:bg-bluedart:hover {
+    background-color: #2a9d8f;
+  }
+  .hover\:bg-petrel:hover {
+    background-color: #264653;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    cursor: pointer;
+  }
+</style>

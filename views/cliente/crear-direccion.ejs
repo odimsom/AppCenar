@@ -1,0 +1,62 @@
+<div class="p-6 text-white">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-petrel">Nueva dirección</h1>
+    <a
+      href="/cliente/direcciones"
+      class="bg-gray-700 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded-lg flex items-center gap-2 transition"
+    >
+      <i class="fa fa-arrow-left"></i> Volver
+    </a>
+  </div>
+
+  <div class="flex justify-center">
+    <div class="w-full max-w-2xl bg-benthic rounded-lg shadow-lg p-6">
+      <form
+        action="/cliente/direcciones/crear"
+        method="POST"
+        class="space-y-4"
+      >
+        <div>
+          <label
+            for="nombre"
+            class="block font-semibold mb-1"
+            >Nombre de la dirección</label
+          >
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            class="w-full rounded-lg border border-gray-600 bg-kuretake text-white p-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-petrel"
+            placeholder="Ej: Casa, Trabajo, etc."
+            required
+          />
+        </div>
+
+        <div>
+          <label
+            for="descripcion"
+            class="block font-semibold mb-1"
+            >Dirección completa</label
+          >
+          <textarea
+            id="descripcion"
+            name="descripcion"
+            rows="4"
+            class="w-full rounded-lg border border-gray-600 bg-kuretake text-white p-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-petrel"
+            placeholder="Ingresa la dirección completa con referencias"
+            required
+          ></textarea>
+        </div>
+
+        <div class="flex justify-end">
+          <button
+            type="submit"
+            class="bg-petrel hover:bg-bluedart text-white font-bold px-6 py-3 rounded-lg transition shadow"
+          >
+            <i class="fa fa-save mr-2"></i> Guardar dirección
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

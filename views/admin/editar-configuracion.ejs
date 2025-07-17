@@ -1,0 +1,47 @@
+<div class="container mx-auto mt-12 px-4 max-w-4xl">
+  <div class="bg-benthic rounded-lg shadow-lg overflow-hidden">
+    <div class="bg-secondary px-6 py-4">
+      <h2 class="text-white text-2xl font-bold">Editar Configuración</h2>
+    </div>
+    <div class="p-6 text-white">
+      <form
+        action="/admin/configuracion/editar"
+        method="POST"
+        class="space-y-6"
+      >
+        <div>
+          <label
+            for="itbis"
+            class="block mb-2 font-semibold"
+            >ITBIS (%)</label
+          >
+          <input
+            type="number"
+            step="0.01"
+            name="itbis"
+            id="itbis"
+            value="<%= configuracion.itbis %>"
+            min="0"
+            required
+            class="w-full rounded-md px-4 py-2 bg-kuretake input-backdrop-blur border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-petrel"
+          />
+        </div>
+
+        <div class="flex justify-end gap-4">
+          <button
+            type="submit"
+            class="bg-green-700 hover:bg-green-800 transition px-6 py-3 rounded-lg font-semibold flex items-center gap-2"
+          >
+            <i class="fa fa-save"></i> Guardar Cambios
+          </button>
+          <a
+            href="/admin/configuracion"
+            class="border border-gray-500 hover:bg-gray-700 transition px-6 py-3 rounded-lg font-semibold text-gray-300 flex items-center justify-center"
+          >
+            Cancelar
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

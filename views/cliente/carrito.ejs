@@ -1,0 +1,81 @@
+<div class="p-6 text-white">
+  <h1 class="text-3xl font-bold text-petrel mb-6">Tu Carrito de Compras</h1>
+
+  <% if (carrito.productos && carrito.productos.length> 0) { %>
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-benthic rounded-xl shadow-md">
+      <thead>
+        <tr>
+          <th class="px-6 py-3 text-left text-white font-semibold uppercase">
+            Producto
+          </th>
+          <th class="px-6 py-3 text-left text-white font-semibold uppercase">
+            Precio
+          </th>
+          <th class="px-6 py-3 text-left text-white font-semibold uppercase">
+            Acciones
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% carrito.productos.forEach(producto=> { %>
+        <tr class="border-b border-gray-700 hover:bg-gray-700 transition">
+          <td class="px-6 py-4">
+            <div class="flex items-center gap-4">
+              <% if (producto.imagen) { %>
+              <img
+                src="<%= producto.imagen %>"
+                alt="<%= producto.nombre %>"
+                class="w-16 h-16 rounded-lg object-cover"
+              />
+              <% } %>
+              <span> <%= producto.nombre %> </span>
+            </div>
+          </td>
+          <td class="px-6 py-4 font-semibold text-petrel">
+            RD$ <%= producto.precio.toFixed(2) %>
+          </td>
+          <td class="px-6 py-4">
+            <a
+              href="/cliente/quitar-del-carrito/<%= producto.id %>"
+              class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg transition"
+              title="Quitar producto"
+            >
+              Quitar
+            </a>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-6 bg-benthic p-6 rounded-xl shadow-md max-w-md mx-auto">
+    <p class="text-white mb-2">
+      <strong>Comercio:</strong>
+      <%= comercio ? comercio.nombre : "No seleccionado" %>
+    </p>
+    <p class="text-white mb-1">
+      <strong>Subtotal:</strong> RD$ <%= subtotal.toFixed(2) %>
+    </p>
+    <p class="text-white mb-1">
+      <strong>ITBIS (<%= itbis %> %):</strong> RD$ <%= (subtotal * (itbis /
+      100)).toFixed(2) %>
+    </p>
+    <p class="text-petrel text-xl font-bold mb-4">
+      <strong>Total:</strong> RD$ <%= total.toFixed(2) %>
+    </p>
+
+    <a
+      href="/cliente/seleccionar-direccion"
+      class="block text-center bg-petrel hover:bg-bluedart text-white font-semibold py-3 rounded-lg transition"
+    >
+      Continuar con el pedido
+    </a>
+  </div>
+  <% } else { %>
+  <div class="bg-gray-800 text-gray-300 p-6 rounded-lg text-center">
+    Tu carrito está vacío.
+  </div>
+  <% } %>
+</div>

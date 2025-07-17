@@ -1,0 +1,75 @@
+<div class="container mx-auto mt-6 max-w-lg">
+  <h1 class="mb-6 text-3xl font-bold text-petrel text-center">
+    Crear Tipo de Comercio
+  </h1>
+
+  <form
+    action="/admin/tipos-comercios/crear"
+    method="POST"
+    enctype="multipart/form-data"
+    class="bg-benthic shadow-lg rounded-lg p-8 text-white"
+  >
+    <div class="mb-5">
+      <label
+        class="block mb-2 font-semibold"
+        for="nombre"
+        >Nombre</label
+      >
+      <input
+        type="text"
+        name="nombre"
+        id="nombre"
+        required
+        class="w-full rounded-md bg-petrel bg-opacity-30 border border-petrel px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bluedart"
+        placeholder="Nombre del tipo de comercio"
+      />
+    </div>
+
+    <div class="mb-5">
+      <label
+        class="block mb-2 font-semibold"
+        for="descripcion"
+        >Descripción</label
+      >
+      <textarea
+        name="descripcion"
+        id="descripcion"
+        required
+        rows="4"
+        class="w-full rounded-md bg-petrel bg-opacity-30 border border-petrel px-4 py-2 text-white placeholder-gray-400 resize-y focus:outline-none focus:ring-2 focus:ring-bluedart"
+        placeholder="Descripción del tipo de comercio"
+      ></textarea>
+    </div>
+
+    <div class="mb-6">
+      <label
+        class="block mb-2 font-semibold"
+        for="icono"
+        >Icono</label
+      >
+      <input
+        type="file"
+        name="icono"
+        id="icono"
+        accept="image/*"
+        required
+        class="w-full rounded-md bg-petrel bg-opacity-30 border border-petrel px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bluedart"
+      />
+    </div>
+
+    <div class="flex justify-center gap-4">
+      <button
+        type="submit"
+        class="bg-petrel hover:bg-bluedart text-white font-semibold px-6 py-3 rounded-lg shadow transition"
+      >
+        <i class="fa fa-save me-2"></i> Guardar
+      </button>
+      <a
+        href="/admin/tipos-comercios"
+        class="bg-gray-700 hover:bg-gray-600 text-white font-semibold px-6 py-3 rounded-lg shadow transition"
+      >
+        Cancelar
+      </a>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,286 @@
+{
+  "tiposComercio": [
+    {
+      "id": 1,
+      "nombre": "Restaurante",
+      "descripcion": "Establecimientos dedicados a la preparación y venta de comida",
+      "icono": "restaurant"
+    },
+    {
+      "id": 2,
+      "nombre": "Farmacia",
+      "descripcion": "Establecimientos dedicados a la venta de medicamentos y productos de salud",
+      "icono": "pharmacy"
+    },
+    {
+      "id": 3,
+      "nombre": "Supermercado",
+      "descripcion": "Tiendas de autoservicio que venden alimentos y artículos para el hogar",
+      "icono": "shopping_cart"
+    },
+    {
+      "id": 4,
+      "nombre": "Panadería",
+      "descripcion": "Establecimientos especializados en la elaboración y venta de pan y productos horneados",
+      "icono": "bakery"
+    },
+    {
+      "id": 5,
+      "nombre": "Cafetería",
+      "descripcion": "Establecimientos especializados en café, bebidas y snacks ligeros",
+      "icono": "local_cafe"
+    },
+    {
+      "id": 6,
+      "nombre": "Heladería",
+      "descripcion": "Establecimientos dedicados a la venta de helados y postres fríos",
+      "icono": "icecream"
+    },
+    {
+      "id": 7,
+      "nombre": "Carnicería",
+      "descripcion": "Establecimientos especializados en la venta de carnes y embutidos",
+      "icono": "store"
+    },
+    {
+      "id": 8,
+      "nombre": "Ferretería",
+      "descripcion": "Tiendas que venden herramientas, materiales de construcción y productos para el hogar",
+      "icono": "build"
+    },
+    {
+      "id": 9,
+      "nombre": "Floristería",
+      "descripcion": "Establecimientos dedicados a la venta de flores y plantas",
+      "icono": "local_florist"
+    },
+    {
+      "id": 10,
+      "nombre": "Minimarket",
+      "descripcion": "Tiendas pequeñas de conveniencia con productos básicos",
+      "icono": "storefront"
+    }
+  ],
+  "comercios": [
+    {
+      "nombre": "Restaurant El Buen Sabor",
+      "telefono": "809-555-0201",
+      "correo": "contacto@elbuensabor.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/elbuensabor.jpg",
+      "horaApertura": "11:00:00",
+      "horaCierre": "23:00:00",
+      "activo": true,
+      "tipoComercioId": 1
+    },
+    {
+      "nombre": "Pizzería Italiana",
+      "telefono": "809-555-0202",
+      "correo": "pedidos@pizzeriaitaliana.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/pizzeriaitaliana.jpg",
+      "horaApertura": "17:00:00",
+      "horaCierre": "01:00:00",
+      "activo": true,
+      "tipoComercioId": 1
+    },
+    {
+      "nombre": "Marisquería La Playa",
+      "telefono": "809-555-0203",
+      "correo": "info@marisqueriaplaya.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/marisqueriaplaya.jpg",
+      "horaApertura": "12:00:00",
+      "horaCierre": "22:00:00",
+      "activo": true,
+      "tipoComercioId": 1
+    },
+    {
+      "nombre": "Farmacia Central",
+      "telefono": "809-555-0204",
+      "correo": "info@farmaciacentral.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/farmaciacentral.jpg",
+      "horaApertura": "07:00:00",
+      "horaCierre": "22:00:00",
+      "activo": true,
+      "tipoComercioId": 2
+    },
+    {
+      "nombre": "Farmacia San Rafael",
+      "telefono": "809-555-0205",
+      "correo": "contacto@farmaciasanrafael.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/farmaciasanrafael.jpg",
+      "horaApertura": "24:00:00",
+      "horaCierre": "24:00:00",
+      "activo": true,
+      "tipoComercioId": 2
+    },
+    {
+      "nombre": "Supermercado La Plaza",
+      "telefono": "809-555-0206",
+      "correo": "gerencia@superlaplaza.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/superlaplaza.jpg",
+      "horaApertura": "08:00:00",
+      "horaCierre": "21:00:00",
+      "activo": true,
+      "tipoComercioId": 3
+    },
+    {
+      "nombre": "Supermercado Nacional",
+      "telefono": "809-555-0207",
+      "correo": "info@supernacional.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/supernacional.jpg",
+      "horaApertura": "07:00:00",
+      "horaCierre": "23:00:00",
+      "activo": true,
+      "tipoComercioId": 3
+    },
+    {
+      "nombre": "Panadería Artesanal",
+      "telefono": "809-555-0208",
+      "correo": "ventas@panaderiaartesanal.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/panaderiaartesanal.jpg",
+      "horaApertura": "06:00:00",
+      "horaCierre": "18:00:00",
+      "activo": true,
+      "tipoComercioId": 4
+    },
+    {
+      "nombre": "Panadería El Trigal",
+      "telefono": "809-555-0209",
+      "correo": "contacto@panaderieltrigal.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/panaderieltrigal.jpg",
+      "horaApertura": "05:30:00",
+      "horaCierre": "19:00:00",
+      "activo": true,
+      "tipoComercioId": 4
+    },
+    {
+      "nombre": "Café Tostado",
+      "telefono": "809-555-0210",
+      "correo": "info@cafetostado.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/cafetostado.jpg",
+      "horaApertura": "06:00:00",
+      "horaCierre": "20:00:00",
+      "activo": true,
+      "tipoComercioId": 5
+    },
+    {
+      "nombre": "Starbucks Plaza",
+      "telefono": "809-555-0211",
+      "correo": "plaza@starbucks.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/starbucksplaza.jpg",
+      "horaApertura": "06:30:00",
+      "horaCierre": "22:00:00",
+      "activo": true,
+      "tipoComercioId": 5
+    },
+    {
+      "nombre": "Heladería Polo Norte",
+      "telefono": "809-555-0212",
+      "correo": "ventas@heladeriapolonorte.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/heladeriapolonorte.jpg",
+      "horaApertura": "14:00:00",
+      "horaCierre": "23:00:00",
+      "activo": true,
+      "tipoComercioId": 6
+    },
+    {
+      "nombre": "Carnicería Don Pedro",
+      "telefono": "809-555-0213",
+      "correo": "pedidos@carniceriadonpedro.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/carniceriadonpedro.jpg",
+      "horaApertura": "07:00:00",
+      "horaCierre": "17:00:00",
+      "activo": true,
+      "tipoComercioId": 7
+    },
+    {
+      "nombre": "Ferretería El Martillo",
+      "telefono": "809-555-0214",
+      "correo": "info@ferreteriaelmartillo.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/ferreteriaelmartillo.jpg",
+      "horaApertura": "08:00:00",
+      "horaCierre": "18:00:00",
+      "activo": true,
+      "tipoComercioId": 8
+    },
+    {
+      "nombre": "Floristería Jardín",
+      "telefono": "809-555-0215",
+      "correo": "contacto@floristeriajardin.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/floristeriajardin.jpg",
+      "horaApertura": "08:00:00",
+      "horaCierre": "17:00:00",
+      "activo": true,
+      "tipoComercioId": 9
+    },
+    {
+      "nombre": "Minimarket La Esquina",
+      "telefono": "809-555-0216",
+      "correo": "ventas@minimarketlaesquina.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/minimarketlaesquina.jpg",
+      "horaApertura": "06:00:00",
+      "horaCierre": "23:00:00",
+      "activo": true,
+      "tipoComercioId": 10
+    },
+    {
+      "nombre": "Colmado El Precio",
+      "telefono": "809-555-0217",
+      "correo": "info@colmadoelprecio.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/colmadoelprecio.jpg",
+      "horaApertura": "07:00:00",
+      "horaCierre": "22:00:00",
+      "activo": true,
+      "tipoComercioId": 10
+    },
+    {
+      "nombre": "Asadero El Carbón",
+      "telefono": "809-555-0218",
+      "correo": "pedidos@asaderoelcarbon.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/asaderoelcarbon.jpg",
+      "horaApertura": "16:00:00",
+      "horaCierre": "24:00:00",
+      "activo": true,
+      "tipoComercioId": 1
+    },
+    {
+      "nombre": "Sushi Yamato",
+      "telefono": "809-555-0219",
+      "correo": "reservas@sushiyamato.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/sushiyamato.jpg",
+      "horaApertura": "18:00:00",
+      "horaCierre": "02:00:00",
+      "activo": true,
+      "tipoComercioId": 1
+    },
+    {
+      "nombre": "Farmacia Popular",
+      "telefono": "809-555-0220",
+      "correo": "info@farmaciapopular.com",
+      "password": "password123",
+      "logo": "https://example.com/logos/farmaciapopular.jpg",
+      "horaApertura": "08:00:00",
+      "horaCierre": "20:00:00",
+      "activo": true,
+      "tipoComercioId": 2
+    }
+  ]
+}

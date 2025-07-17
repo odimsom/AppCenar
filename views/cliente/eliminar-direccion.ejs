@@ -1,0 +1,53 @@
+<div class="p-6 text-white">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-petrel">Eliminar dirección</h1>
+    <a
+      href="/cliente/direcciones"
+      class="bg-gray-700 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded-lg flex items-center gap-2 transition"
+    >
+      <i class="fa fa-arrow-left"></i> Volver
+    </a>
+  </div>
+
+  <div class="flex justify-center">
+    <div class="w-full max-w-2xl bg-benthic rounded-lg p-6 shadow">
+      <h2 class="text-xl font-bold mb-4 text-white">
+        ¿Estás seguro de que deseas eliminar esta dirección?
+      </h2>
+
+      <div
+        class="bg-yellow-600/20 border border-yellow-700 rounded-lg p-4 mb-4"
+      >
+        <p>
+          <strong class="text-yellow-400">Nombre:</strong> <%= direccion.nombre
+          %>
+        </p>
+        <p>
+          <strong class="text-yellow-400">Dirección:</strong> <%=
+          direccion.descripcion %>
+        </p>
+      </div>
+
+      <p class="text-red-400 mb-6">Esta acción no se puede deshacer.</p>
+
+      <form
+        action="/cliente/direcciones/eliminar/<%= direccion.id %>"
+        method="POST"
+        class="flex justify-between"
+      >
+        <a
+          href="/cliente/direcciones"
+          class="bg-gray-700 hover:bg-gray-600 text-white font-semibold px-5 py-2 rounded-lg transition"
+        >
+          Cancelar
+        </a>
+        <button
+          type="submit"
+          class="bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-2 rounded-lg transition"
+        >
+          <i class="fa fa-trash mr-2"></i> Eliminar dirección
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

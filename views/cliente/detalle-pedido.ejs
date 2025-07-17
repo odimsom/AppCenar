@@ -1,0 +1,114 @@
+<div class="p-6 text-white">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-petrel">
+      Detalle del pedido #<%= pedido.id %>
+    </h1>
+    <a
+      href="/cliente/pedidos"
+      class="bg-gray-700 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded-lg flex items-center gap-2 transition"
+    >
+      <i class="fa fa-arrow-left"></i> Volver
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Información del pedido -->
+    <div class="md:col-span-2 space-y-6">
+      <div class="bg-benthic rounded-lg p-6 shadow">
+        <h2 class="text-xl font-bold mb-4">Información del pedido</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p>
+              <span class="font-semibold">Estado:</span>
+              <span
+                class="inline-block px-3 py-1 rounded-full text-sm font-bold <%= pedido.estado === 'pendiente' ? 'bg-yellow-500 text-black' : pedido.estado === 'en proceso' ? 'bg-blue-500' : 'bg-green-500' %>"
+              >
+                <%= pedido.estado %>
+              </span>
+            </p>
+            <p>
+              <span class="font-semibold">Fecha:</span> <%= new
+              Date(pedido.createdAt).toLocaleString() %>
+            </p>
+            <p>
+              <span class="font-semibold">Comercio:</span> <%=
+              pedido.comercio.nombre %>
+            </p>
+          </div>
+          <div>
+            <p>
+              <span class="font-semibold">Subtotal:</span> RD$ <%=
+              pedido.subtotal.toFixed(2) %>
+            </p>
+            <p>
+              <span class="font-semibold">ITBIS:</span> RD$ <%= (pedido.total -
+              pedido.subtotal).toFixed(2) %>
+            </p>
+            <p>
+              <span class="font-semibold">Total:</span> RD$ <%=
+              pedido.total.toFixed(2) %>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Productos -->
+      <div class="bg-benthic rounded-lg p-6 shadow">
+        <h2 class="text-xl font-bold mb-4">Productos</h2>
+        <div class="space-y-4">
+          <% pedido.detalles.forEach(detalle => { %>
+          <div
+            class="flex items-center gap-4 bg-kuretake rounded-lg p-4 shadow"
+          >
+            <img
+              src="<%= detalle.producto.imagen %>"
+              alt="<%= detalle.producto.nombre %>"
+              class="w-16 h-16 rounded-lg object-cover"
+            />
+            <div class="flex-1">
+              <h3 class="font-semibold"><%= detalle.producto.nombre %></h3>
+              <p class="text-sm text-gray-400">
+                <%= detalle.producto.descripcion %>
+              </p>
+            </div>
+            <p class="font-bold text-petrel">
+              RD$ <%= detalle.precio.toFixed(2) %>
+            </p>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estado del pedido -->
+    <div class="space-y-6">
+      <div class="bg-benthic rounded-lg p-6 shadow">
+        <h2 class="text-xl font-bold mb-4">Estado del pedido</h2>
+        <ul class="space-y-3">
+          <li class="flex justify-between items-center">
+            <span>Pedido realizado</span>
+            <i class="fa fa-check text-green-400"></i>
+          </li>
+          <li class="flex justify-between items-center">
+            <span>En preparación</span>
+            <i
+              class="fa <%= pedido.estado !== 'pendiente' ? 'fa-check text-green-400' : 'fa-clock text-gray-400' %>"
+            ></i>
+          </li>
+          <li class="flex justify-between items-center">
+            <span>En camino</span>
+            <i
+              class="fa <%= pedido.estado === 'en proceso' ? 'fa-motorcycle text-blue-400' : pedido.estado === 'completado' ? 'fa-check text-green-400' : 'fa-clock text-gray-400' %>"
+            ></i>
+          </li>
+          <li class="flex justify-between items-center">
+            <span>Entregado</span>
+            <i
+              class="fa <%= pedido.estado === 'completado' ? 'fa-check text-green-400' : 'fa-clock text-gray-400' %>"
+            ></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

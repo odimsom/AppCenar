@@ -1,0 +1,71 @@
+<div class="p-6 text-white">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-petrel">Mis favoritos</h1>
+    <a
+      href="/cliente/home"
+      class="bg-gray-700 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded-lg flex items-center gap-2 transition"
+    >
+      <i class="fa fa-arrow-left"></i> Volver
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <% if (favoritos && favoritos.length> 0) { %> <%
+    favoritos.forEach(favorito=> { %>
+    <div
+      class="bg-benthic rounded-xl p-5 shadow-md flex flex-col justify-between h-full"
+    >
+      <div class="flex flex-col items-center text-center mb-4">
+        <% if (favorito.comercio.logo) { %>
+        <img
+          src="<%= favorito.comercio.logo %>"
+          alt="<%= favorito.comercio.nombre %>"
+          class="w-24 h-24 object-contain mb-4 rounded-lg"
+        />
+        <% } else { %>
+        <div
+          class="w-24 h-24 bg-gray-700 rounded-lg flex items-center justify-center mb-4"
+        >
+          <i class="fa fa-store text-4xl text-gray-300"></i>
+        </div>
+        <% } %>
+        <h2 class="text-xl font-bold text-white mb-2">
+          <%= favorito.comercio.nombre %>
+        </h2>
+      </div>
+      <div class="space-y-2 text-center mb-4">
+        <p class="text-gray-300">
+          <i class="fa fa-phone mr-2"></i>
+          <%= favorito.comercio.telefono %>
+        </p>
+        <p class="text-gray-300">
+          <i class="fa fa-clock mr-2"></i>
+          <%= favorito.comercio.horaApertura %> - <%=
+          favorito.comercio.horaCierre %>
+        </p>
+      </div>
+      <div class="flex justify-between gap-2">
+        <a
+          href="/cliente/catalogo/<%= favorito.comercio.id %>"
+          class="flex-1 bg-petrel hover:bg-bluedart text-white font-semibold py-2 rounded-lg text-center transition"
+        >
+          Ver catálogo
+        </a>
+        <a
+          href="/cliente/favoritos/eliminar/<%= favorito.comercio.id %>"
+          class="flex items-center justify-center bg-red-700 hover:bg-red-800 text-white p-2 rounded-lg transition"
+        >
+          <i class="fa fa-heart-broken"></i>
+        </a>
+      </div>
+    </div>
+    <% }); %> <% } else { %>
+    <div class="col-span-full">
+      <div class="bg-gray-800 text-gray-300 p-6 rounded-lg text-center">
+        No tienes comercios favoritos. Agrega comercios a tus favoritos para
+        acceder rápidamente a ellos.
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>

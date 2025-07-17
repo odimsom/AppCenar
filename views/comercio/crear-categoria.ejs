@@ -1,0 +1,81 @@
+<div class="p-6 max-w-4xl mx-auto text-white">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-petrel">Nueva categoría</h1>
+    <a
+      href="/comercio/categorias"
+      class="btn bg-petrel hover:bg-bluedart text-white rounded-lg py-2 px-4 flex items-center gap-2"
+    >
+      <i class="fa fa-arrow-left"></i> Volver
+    </a>
+  </div>
+
+  <div class="bg-benthic rounded-xl shadow-lg p-6">
+    <form
+      action="/comercio/categorias/crear"
+      method="POST"
+      class="space-y-4"
+    >
+      <div>
+        <label
+          for="nombre"
+          class="block text-sm font-medium text-gray-300 mb-1"
+          >Nombre de la categoría</label
+        >
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          placeholder="Ej: Entradas, Platos fuertes, Postres, etc."
+          class="w-full rounded-lg border border-petrel bg-transparent text-white p-3 focus:outline-none focus:ring-2 focus:ring-bluedart"
+          required
+        />
+      </div>
+
+      <div>
+        <label
+          for="descripcion"
+          class="block text-sm font-medium text-gray-300 mb-1"
+          >Descripción</label
+        >
+        <textarea
+          id="descripcion"
+          name="descripcion"
+          rows="4"
+          placeholder="Describe brevemente esta categoría"
+          class="w-full rounded-lg border border-petrel bg-transparent text-white p-3 focus:outline-none focus:ring-2 focus:ring-bluedart"
+          required
+        ></textarea>
+      </div>
+
+      <div class="pt-4">
+        <button
+          type="submit"
+          class="w-full py-3 rounded-lg bg-bluedart hover:bg-petrel text-white font-semibold transition"
+        >
+          Guardar categoría
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  .bg-benthic {
+    background-color: #151e27;
+  }
+  .text-petrel {
+    color: #264653;
+  }
+  .bg-petrel {
+    background-color: #264653;
+  }
+  .bg-bluedart {
+    background-color: #2a9d8f;
+  }
+  .hover\:bg-bluedart:hover {
+    background-color: #2a9d8f;
+  }
+  .hover\:bg-petrel:hover {
+    background-color: #264653;
+  }
+</style>

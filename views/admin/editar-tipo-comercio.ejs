@@ -1,0 +1,86 @@
+<div class="container mx-auto mt-10 px-4 max-w-xl text-white">
+  <h1 class="mb-6 text-3xl font-bold text-petrel">Editar Tipo de Comercio</h1>
+
+  <form
+    action="/admin/tipos-comercios/editar/<%= tipoComercio.id %>"
+    method="POST"
+    enctype="multipart/form-data"
+    class="bg-benthic rounded-lg shadow-md p-6"
+  >
+    <div class="mb-5">
+      <label
+        class="block mb-2 font-semibold"
+        for="nombre"
+        >Nombre</label
+      >
+      <input
+        type="text"
+        name="nombre"
+        id="nombre"
+        class="w-full rounded-md border border-gray-600 bg-kuretake px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-petrel"
+        value="<%= tipoComercio.nombre %>"
+        required
+      />
+    </div>
+
+    <div class="mb-5">
+      <label
+        class="block mb-2 font-semibold"
+        for="descripcion"
+        >Descripción</label
+      >
+      <textarea
+        name="descripcion"
+        id="descripcion"
+        rows="4"
+        class="w-full rounded-md border border-gray-600 bg-kuretake px-4 py-2 text-white resize-y focus:outline-none focus:ring-2 focus:ring-petrel"
+        required
+      >
+<%= tipoComercio.descripcion %></textarea
+      >
+    </div>
+
+    <div class="mb-5">
+      <label class="block mb-2 font-semibold">Icono Actual:</label>
+      <% if (tipoComercio.icono) { %>
+      <img
+        src="<%= tipoComercio.icono %>"
+        alt="icono"
+        class="w-16 h-16 object-contain rounded"
+      />
+      <% } else { %>
+      <p class="text-gray-400">Sin icono</p>
+      <% } %>
+    </div>
+
+    <div class="mb-6">
+      <label
+        class="block mb-2 font-semibold"
+        for="icono"
+        >Cambiar Icono (opcional)</label
+      >
+      <input
+        type="file"
+        name="icono"
+        id="icono"
+        accept="image/*"
+        class="w-full rounded-md border border-gray-600 bg-kuretake px-3 py-2 text-white file:bg-petrel file:text-white file:rounded file:px-3 file:py-1 file:cursor-pointer focus:outline-none focus:ring-2 focus:ring-petrel"
+      />
+    </div>
+
+    <div class="flex items-center gap-3">
+      <button
+        type="submit"
+        class="bg-petrel hover:bg-bluedart transition-colors duration-300 px-6 py-3 rounded-lg text-white font-semibold shadow"
+      >
+        <i class="fa fa-save me-2"></i> Guardar Cambios
+      </button>
+      <a
+        href="/admin/tipos-comercios"
+        class="bg-gray-700 hover:bg-gray-600 transition-colors duration-300 px-6 py-3 rounded-lg text-white font-semibold shadow"
+      >
+        Cancelar
+      </a>
+    </div>
+  </form>
+</div>

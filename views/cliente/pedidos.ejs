@@ -1,0 +1,95 @@
+<div class="p-6 text-white">
+  <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-petrel">Mis Pedidos</h1>
+    <a
+      href="/cliente/home"
+      class="btn bg-benthic hover:bg-bluedart text-white rounded-lg py-2 px-4 mt-4 md:mt-0 transition"
+    >
+      <i class="fa fa-arrow-left me-2"></i> Volver
+    </a>
+  </div>
+
+  <div class="bg-benthic rounded-xl shadow-lg overflow-hidden">
+    <div class="p-6">
+      <% if (pedidos && pedidos.length > 0) { %>
+      <div class="overflow-auto rounded-lg">
+        <table class="w-full text-sm text-left text-gray-300">
+          <thead class="bg-petrel text-white uppercase text-xs">
+            <tr>
+              <th
+                scope="col"
+                class="px-6 py-3"
+              >
+                #
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-3"
+              >
+                Comercio
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-3"
+              >
+                Fecha
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-3"
+              >
+                Total
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-3"
+              >
+                Estado
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-3"
+              >
+                Acciones
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% pedidos.forEach(pedido => { %>
+            <tr class="border-b border-gray-700 hover:bg-gray-800 transition">
+              <td class="px-6 py-4"><%= pedido.id %></td>
+              <td class="px-6 py-4 font-medium text-white">
+                <%= pedido.comercio.nombre %>
+              </td>
+              <td class="px-6 py-4">
+                <%= new Date(pedido.createdAt).toLocaleString() %>
+              </td>
+              <td class="px-6 py-4">RD$ <%= pedido.total.toFixed(2) %></td>
+              <td class="px-6 py-4">
+                <span
+                  class="px-2 py-1 rounded-lg text-xs font-bold <%= pedido.estado === 'pendiente' ? 'bg-yellow-500 text-black' : pedido.estado === 'en proceso' ? 'bg-blue-600 text-white' : 'bg-green-600 text-white' %>"
+                >
+                  <%= pedido.estado %>
+                </span>
+              </td>
+              <td class="px-6 py-4">
+                <a
+                  href="/cliente/pedidos/<%= pedido.id %>"
+                  class="bg-petrel hover:bg-bluedart text-white px-3 py-2 rounded-lg text-sm transition"
+                >
+                  <i class="fa fa-eye me-1"></i> Ver
+                </a>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+      <% } else { %>
+      <div class="bg-gray-800 text-gray-300 p-6 rounded-lg text-center">
+        No tienes pedidos realizados.
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>

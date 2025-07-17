@@ -1,0 +1,117 @@
+<div class="p-8 bg-kuretake min-h-screen text-white">
+  <h1 class="text-4xl font-bold text-petrel mb-8 text-center">
+    Dashboard Administrativo
+  </h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+    <div class="bg-benthic/80 p-6 rounded-xl shadow-lg text-center">
+      <h2 class="text-5xl font-bold text-petrel mb-2"><%= totalPedidos %></h2>
+      <p class="text-gray-300">Pedidos Totales</p>
+    </div>
+    <div class="bg-benthic/80 p-6 rounded-xl shadow-lg text-center">
+      <h2 class="text-5xl font-bold text-green-500 mb-2"><%= pedidosHoy %></h2>
+      <p class="text-gray-300">Pedidos Hoy</p>
+    </div>
+    <div class="bg-benthic/80 p-6 rounded-xl shadow-lg text-center">
+      <h2 class="text-5xl font-bold text-blue-400 mb-2">
+        <%= comerciosActivos %>
+      </h2>
+      <p class="text-gray-300">Comercios Activos</p>
+    </div>
+    <div class="bg-benthic/80 p-6 rounded-xl shadow-lg text-center">
+      <h2 class="text-5xl font-bold text-yellow-400 mb-2">
+        <%= totalProductos %>
+      </h2>
+      <p class="text-gray-300">Productos</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <!-- Usuarios -->
+    <div class="bg-benthic/80 p-6 rounded-xl shadow-lg">
+      <h3 class="text-2xl font-bold text-petrel mb-4">Usuarios</h3>
+      <div class="grid grid-cols-2 gap-6 text-center mb-4">
+        <div>
+          <p class="font-semibold">Clientes</p>
+          <p class="text-green-400 text-3xl font-bold">
+            <%= clientesActivos %>
+          </p>
+          <p class="text-red-400 text-3xl font-bold">
+            <%= clientesInactivos %>
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold">Deliveries</p>
+          <p class="text-green-400 text-3xl font-bold">
+            <%= deliveriesActivos %>
+          </p>
+          <p class="text-red-400 text-3xl font-bold">
+            <%= deliveriesInactivos %>
+          </p>
+        </div>
+      </div>
+      <div class="flex justify-center gap-4">
+        <a
+          href="/admin/clientes"
+          class="bg-petrel text-white py-2 px-4 rounded-lg hover:bg-bluedart"
+          >Ver clientes</a
+        >
+        <a
+          href="/admin/deliveries"
+          class="bg-petrel text-white py-2 px-4 rounded-lg hover:bg-bluedart"
+          >Ver deliveries</a
+        >
+      </div>
+    </div>
+
+    <!-- Comercios -->
+    <div class="bg-benthic/80 p-6 rounded-xl shadow-lg text-center">
+      <h3 class="text-2xl font-bold text-petrel mb-4">Comercios</h3>
+      <p class="text-green-400 text-4xl font-bold mb-2">
+        <%= comerciosActivos %> Activos
+      </p>
+      <p class="text-red-400 text-4xl font-bold mb-4">
+        <%= comerciosInactivos %> Inactivos
+      </p>
+      <a
+        href="/admin/comercios"
+        class="bg-petrel text-white py-2 px-4 rounded-lg hover:bg-bluedart"
+        >Ver comercios</a
+      >
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-benthic/80 p-6 rounded-xl shadow-lg">
+      <h4 class="text-xl font-bold text-petrel mb-2">Configuración</h4>
+      <p class="text-gray-300 mb-4">
+        Administra la configuración general del sistema.
+      </p>
+      <a
+        href="/admin/configuracion"
+        class="bg-petrel text-white py-2 px-4 rounded-lg hover:bg-bluedart inline-block"
+        >Ver configuración</a
+      >
+    </div>
+    <div class="bg-benthic/80 p-6 rounded-xl shadow-lg">
+      <h4 class="text-xl font-bold text-petrel mb-2">Administradores</h4>
+      <p class="text-gray-300 mb-4">
+        Gestiona los administradores del sistema.
+      </p>
+      <a
+        href="/admin/administradores"
+        class="bg-petrel text-white py-2 px-4 rounded-lg hover:bg-bluedart inline-block"
+        >Ver administradores</a
+      >
+    </div>
+    <div class="bg-benthic/80 p-6 rounded-xl shadow-lg">
+      <h4 class="text-xl font-bold text-petrel mb-2">Tipos de Comercios</h4>
+      <p class="text-gray-300 mb-4">Administra las categorías disponibles.</p>
+      <a
+        href="/admin/tipos-comercios"
+        class="bg-petrel text-white py-2 px-4 rounded-lg hover:bg-bluedart inline-block"
+        >Ver tipos</a
+      >
+    </div>
+  </div>
+</div>

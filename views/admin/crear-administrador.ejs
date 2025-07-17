@@ -1,0 +1,156 @@
+<div class="container mx-auto mt-4 max-w-4xl">
+  <h1 class="mb-6 text-3xl font-bold text-petrel text-center">
+    Crear Administrador
+  </h1>
+
+  <form
+    action="/admin/administradores/crear"
+    method="POST"
+    class="bg-benthic shadow-lg rounded-lg p-8 text-white"
+  >
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label
+          class="block mb-2 font-semibold"
+          for="nombre"
+          >Nombre</label
+        >
+        <input
+          type="text"
+          name="nombre"
+          id="nombre"
+          required
+          class="w-full rounded-md bg-petrel bg-opacity-30 border border-petrel px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bluedart"
+          placeholder="Nombre"
+        />
+      </div>
+
+      <div>
+        <label
+          class="block mb-2 font-semibold"
+          for="apellido"
+          >Apellido</label
+        >
+        <input
+          type="text"
+          name="apellido"
+          id="apellido"
+          required
+          class="w-full rounded-md bg-petrel bg-opacity-30 border border-petrel px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bluedart"
+          placeholder="Apellido"
+        />
+      </div>
+
+      <div>
+        <label
+          class="block mb-2 font-semibold"
+          for="cedula"
+          >Cédula</label
+        >
+        <input
+          type="text"
+          name="cedula"
+          id="cedula"
+          required
+          class="w-full rounded-md bg-petrel bg-opacity-30 border border-petrel px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bluedart"
+          placeholder="Cédula"
+        />
+      </div>
+
+      <div>
+        <label
+          class="block mb-2 font-semibold"
+          for="correo"
+          >Correo</label
+        >
+        <input
+          type="email"
+          name="correo"
+          id="correo"
+          required
+          class="w-full rounded-md bg-petrel bg-opacity-30 border border-petrel px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bluedart"
+          placeholder="Correo"
+        />
+      </div>
+
+      <div>
+        <label
+          class="block mb-2 font-semibold"
+          for="usuario"
+          >Usuario</label
+        >
+        <input
+          type="text"
+          name="usuario"
+          id="usuario"
+          required
+          class="w-full rounded-md bg-petrel bg-opacity-30 border border-petrel px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bluedart"
+          placeholder="Usuario"
+        />
+      </div>
+
+      <div>
+        <label
+          class="block mb-2 font-semibold"
+          for="telefono"
+          >Teléfono</label
+        >
+        <input
+          type="text"
+          name="telefono"
+          id="telefono"
+          required
+          class="w-full rounded-md bg-petrel bg-opacity-30 border border-petrel px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bluedart"
+          placeholder="Teléfono"
+        />
+      </div>
+
+      <div>
+        <label
+          class="block mb-2 font-semibold"
+          for="password"
+          >Contraseña</label
+        >
+        <input
+          type="password"
+          name="password"
+          id="password"
+          required
+          class="w-full rounded-md bg-petrel bg-opacity-30 border border-petrel px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bluedart"
+          placeholder="Contraseña"
+        />
+      </div>
+
+      <div>
+        <label
+          class="block mb-2 font-semibold"
+          for="confirmarPassword"
+          >Confirmar Contraseña</label
+        >
+        <input
+          type="password"
+          name="confirmarPassword"
+          id="confirmarPassword"
+          required
+          class="w-full rounded-md bg-petrel bg-opacity-30 border border-petrel px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bluedart"
+          placeholder="Confirmar Contraseña"
+        />
+      </div>
+    </div>
+
+    <div class="mt-8 flex justify-center gap-4">
+      <button
+        type="submit"
+        class="bg-petrel hover:bg-bluedart text-white font-semibold px-6 py-3 rounded-lg shadow transition"
+      >
+        <i class="fa fa-save me-2"></i> Crear
+      </button>
+      <a
+        href="/admin/administradores"
+        class="bg-gray-700 hover:bg-gray-600 text-white font-semibold px-6 py-3 rounded-lg shadow transition"
+      >
+        Cancelar
+      </a>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,131 @@
+<div class="p-6 text-white">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-petrel"><%= comercio.nombre %></h1>
+    <a
+      href="/cliente/comercios/<%= comercio.tipoComercioId %>"
+      class="bg-gray-700 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded-lg flex items-center gap-2 transition"
+    >
+      <i class="fa fa-arrow-left"></i> Volver
+    </a>
+  </div>
+
+  <div class="flex flex-col md:flex-row md:justify-between mb-8 gap-4">
+    <div class="space-y-2">
+      <p class="text-lg flex items-center gap-2">
+        <i class="fa fa-phone text-petrel"></i> <%= comercio.telefono %>
+      </p>
+      <p class="text-lg flex items-center gap-2">
+        <i class="fa fa-clock text-petrel"></i> <%= comercio.horaApertura %> -
+        <%= comercio.horaCierre %>
+      </p>
+    </div>
+    <% if (comercio.logo) { %>
+    <div class="flex justify-center md:justify-end">
+      <img
+        src="<%= comercio.logo %>"
+        alt="<%= comercio.nombre %>"
+        class="w-24 h-24 object-cover rounded-lg shadow"
+      />
+    </div>
+    <% } %>
+  </div>
+
+  <% if (categorias && categorias.length > 0) { %> <%
+  categorias.forEach(categoria => { %>
+  <div class="bg-benthic rounded-lg shadow-lg mb-6">
+    <div class="bg-petrel rounded-t-lg p-4">
+      <h2 class="text-xl font-bold"><%= categoria.nombre %></h2>
+    </div>
+    <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <% if (categoria.productos && categoria.productos.length > 0) { %> <%
+      categoria.productos.forEach(producto => { %>
+      <div class="bg-kuretake rounded-lg shadow flex flex-col">
+        <img
+          src="<%= producto.imagen %>"
+          alt="<%= producto.nombre %>"
+          class="rounded-t-lg h-48 object-cover w-full"
+        />
+        <div class="p-4 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg font-bold mb-1"><%= producto.nombre %></h3>
+            <p class="text-sm text-gray-300 mb-2">
+              <%= producto.descripcion %>
+            </p>
+            <p class="text-petrel font-semibold text-lg">
+              RD$ <%= producto.precio.toFixed(2) %>
+            </p>
+          </div>
+          <form
+            action="/cliente/agregar-al-carrito"
+            method="POST"
+            class="mt-4"
+          >
+            <input
+              type="hidden"
+              name="productoId"
+              value="<%= producto.id %>"
+            />
+            <button
+              type="submit"
+              class="bg-petrel hover:bg-bluedart text-white font-bold w-full py-2 rounded-lg transition"
+            >
+              <i class="fa fa-cart-plus mr-2"></i> Agregar
+            </button>
+          </form>
+        </div>
+      </div>
+      <% }); %> <% } else { %>
+      <p class="col-span-3 text-gray-400">
+        No hay productos disponibles en esta categoría.
+      </p>
+      <% } %>
+    </div>
+  </div>
+  <% }); %> <% } else { %>
+  <div class="bg-mississippi text-white p-4 rounded-lg shadow mb-4">
+    Este comercio aún no tiene categorías de productos.
+  </div>
+  <% } %> <% if (typeof carrito !== 'undefined' && carrito?.productos?.length >
+  0) { %>
+  <div class="bg-benthic rounded-lg shadow-lg mt-8">
+    <div class="bg-petrel rounded-t-lg p-4">
+      <h2 class="text-xl font-bold">Tu pedido actual</h2>
+    </div>
+    <div class="p-6 overflow-x-auto">
+      <table class="w-full text-white text-left">
+        <thead>
+          <tr class="text-petrel font-bold border-b border-gray-700">
+            <th class="py-2">Producto</th>
+            <th class="py-2">Precio</th>
+            <th class="py-2">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% carrito.productos.forEach(producto => { %>
+          <tr class="border-b border-gray-700">
+            <td class="py-3"><%= producto.nombre %></td>
+            <td class="py-3">RD$ <%= producto.precio.toFixed(2) %></td>
+            <td class="py-3">
+              <a
+                href="/cliente/quitar-del-carrito/<%= producto.id %>"
+                class="bg-red-600 hover:bg-red-500 px-3 py-1 rounded-lg text-white font-semibold transition text-sm"
+              >
+                <i class="fa fa-trash"></i>
+              </a>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <div class="flex justify-end mt-6">
+        <a
+          href="/cliente/seleccionar-direccion"
+          class="bg-petrel hover:bg-bluedart text-white font-bold px-6 py-3 rounded-lg shadow transition"
+        >
+          <i class="fa fa-check mr-2"></i> Finalizar pedido
+        </a>
+      </div>
+    </div>
+  </div>
+  <% } %>
+</div>

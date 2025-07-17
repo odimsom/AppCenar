@@ -1,0 +1,79 @@
+<div class="p-6 text-white">
+  <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-petrel"><%= tipoComercio.nombre %></h1>
+    <a
+      href="/cliente/home"
+      class="btn bg-benthic hover:bg-bluedart text-white rounded-lg py-2 px-4 mt-4 md:mt-0 transition"
+    >
+      <i class="fa fa-arrow-left me-2"></i> Volver
+    </a>
+  </div>
+
+  <p class="text-gray-300 mb-8 text-lg"><%= tipoComercio.descripcion %></p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <% if (comercios && comercios.length> 0) { %> <%
+    comercios.forEach(comercio=> { %>
+    <div
+      class="bg-benthic rounded-xl shadow-md flex flex-col justify-between p-6 hover:scale-105 transition duration-300"
+    >
+      <div class="text-center mb-4">
+        <% if (comercio.logo) { %>
+        <img
+          src="<%= comercio.logo %>"
+          alt="<%= comercio.nombre %>"
+          class="w-24 h-24 object-contain mx-auto mb-3 rounded-lg shadow"
+        />
+        <% } else { %>
+        <div
+          class="w-24 h-24 flex items-center justify-center bg-gray-700 rounded-lg mx-auto mb-3 text-gray-400"
+        >
+          <i class="fa fa-store fa-3x"></i>
+        </div>
+        <% } %>
+        <h5 class="text-xl font-bold text-white mb-1">
+          <%= comercio.nombre %>
+        </h5>
+      </div>
+      <div class="text-gray-300 space-y-1 text-center mb-4">
+        <p>
+          <i class="fa fa-phone me-2"></i>
+          <%= comercio.telefono %>
+        </p>
+        <p>
+          <i class="fa fa-clock me-2"></i>
+          <%= comercio.horaApertura %> - <%= comercio.horaCierre %>
+        </p>
+      </div>
+      <div class="flex justify-between space-x-2">
+        <a
+          href="/cliente/catalogo/<%= comercio.id %>"
+          class="flex-1 bg-petrel hover:bg-bluedart text-white font-semibold py-2 rounded-lg text-center transition"
+          >Ver catálogo</a
+        >
+        <% if (favoritosIds.includes(comercio.id)) { %>
+        <a
+          href="/cliente/favoritos/eliminar/<%= comercio.id %>"
+          class="bg-red-600 hover:bg-red-700 text-white rounded-lg px-3 flex items-center justify-center transition"
+        >
+          <i class="fa fa-heart-broken"></i>
+        </a>
+        <% } else { %>
+        <a
+          href="/cliente/favoritos/agregar/<%= comercio.id %>"
+          class="bg-petrel hover:bg-bluedart text-white rounded-lg px-3 flex items-center justify-center transition"
+        >
+          <i class="fa fa-heart"></i>
+        </a>
+        <% } %>
+      </div>
+    </div>
+    <% }); %> <% } else { %>
+    <div class="col-span-full">
+      <div class="bg-gray-800 text-gray-300 p-6 rounded-lg text-center">
+        No hay comercios disponibles en esta categoría.
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>

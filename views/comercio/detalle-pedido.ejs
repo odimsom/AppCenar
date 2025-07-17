@@ -1,0 +1,145 @@
+<div class="p-6 max-w-5xl mx-auto text-white">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-petrel">
+      Detalle del pedido #<%= pedido.id %>
+    </h1>
+    <a
+      href="/comercio/home"
+      class="btn bg-petrel hover:bg-bluedart text-white rounded-lg py-2 px-4 flex items-center gap-2"
+    >
+      <i class="fa fa-arrow-left"></i> Volver
+    </a>
+  </div>
+
+  <div class="space-y-6">
+    <!-- Información del pedido -->
+    <div class="bg-benthic rounded-xl shadow-lg p-6">
+      <h2 class="text-2xl font-bold mb-4 text-petrel">
+        Información del pedido
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300">
+        <div>
+          <p>
+            <strong class="text-white">Estado:</strong>
+            <span
+              class="px-3 py-1 rounded-lg text-sm <%= pedido.estado === 'pendiente' ? 'bg-yellow-500' : pedido.estado === 'en proceso' ? 'bg-blue-500' : 'bg-green-600' %>"
+            >
+              <%= pedido.estado %>
+            </span>
+          </p>
+          <p>
+            <strong class="text-white">Fecha:</strong> <%= new
+            Date(pedido.createdAt).toLocaleString() %>
+          </p>
+          <p>
+            <strong class="text-white">Cliente:</strong> <%=
+            pedido.cliente.nombre %> <%= pedido.cliente.apellido %>
+          </p>
+        </div>
+        <div>
+          <p>
+            <strong class="text-white">Subtotal:</strong> RD$ <%=
+            pedido.subtotal.toFixed(2) %>
+          </p>
+          <p>
+            <strong class="text-white">ITBIS:</strong> RD$ <%= (pedido.total -
+            pedido.subtotal).toFixed(2) %>
+          </p>
+          <p>
+            <strong class="text-white">Total:</strong> RD$ <%=
+            pedido.total.toFixed(2) %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Productos -->
+    <div class="bg-benthic rounded-xl shadow-lg p-6">
+      <h2 class="text-2xl font-bold mb-4 text-petrel">Productos</h2>
+      <div class="space-y-4">
+        <% pedido.detalles.forEach(detalle => { %>
+        <div
+          class="flex items-center justify-between bg-[#1c2b36] p-4 rounded-lg"
+        >
+          <div class="flex items-center gap-4">
+            <img
+              src="<%= detalle.producto.imagen %>"
+              alt="<%= detalle.producto.nombre %>"
+              class="w-14 h-14 object-cover rounded-lg"
+            />
+            <div>
+              <p class="font-semibold text-white">
+                <%= detalle.producto.nombre %>
+              </p>
+              <p class="text-gray-400 text-sm">
+                <%= detalle.producto.descripcion %>
+              </p>
+            </div>
+          </div>
+          <span class="font-bold text-white"
+            >RD$ <%= detalle.precio.toFixed(2) %></span
+          >
+        </div>
+        <% }); %>
+      </div>
+    </div>
+
+    <!-- Asignar delivery -->
+    <% if (pedido.estado === 'pendiente') { %>
+    <div class="bg-benthic rounded-xl shadow-lg p-6">
+      <h2 class="text-2xl font-bold mb-4 text-petrel">Asignar delivery</h2>
+      <% if (deliveriesDisponibles && deliveriesDisponibles.length > 0) { %>
+      <form
+        action="/comercio/pedidos/<%= pedido.id %>/asignar-delivery"
+        method="POST"
+        class="space-y-4"
+      >
+        <select
+          name="deliveryId"
+          required
+          class="w-full rounded-lg border border-petrel bg-transparent text-white p-3 focus:outline-none focus:ring-2 focus:ring-bluedart"
+        >
+          <option value="">Seleccione un delivery</option>
+          <% deliveriesDisponibles.forEach(delivery => { %>
+          <option value="<%= delivery.id %>">
+            <%= delivery.nombre %> <%= delivery.apellido %>
+          </option>
+          <% }); %>
+        </select>
+        <button
+          type="submit"
+          class="w-full py-3 rounded-lg bg-bluedart hover:bg-petrel text-white font-semibold transition"
+        >
+          Asignar delivery
+        </button>
+      </form>
+      <% } else { %>
+      <div class="text-yellow-500">
+        No hay deliveries disponibles en este momento.
+      </div>
+      <% } %>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<style>
+  .bg-benthic {
+    background-color: #151e27;
+  }
+  .text-petrel {
+    color: #264653;
+  }
+  .bg-petrel {
+    background-color: #264653;
+  }
+  .bg-bluedart {
+    background-color: #2a9d8f;
+  }
+  .hover\:bg-bluedart:hover {
+    background-color: #2a9d8f;
+  }
+  .hover\:bg-petrel:hover {
+    background-color: #264653;
+  }
+</style>

@@ -1,0 +1,35 @@
+<div class="container mx-auto mt-10 px-4 max-w-xl text-white">
+  <h1 class="mb-6 text-3xl font-bold text-petrel">Eliminar Tipo de Comercio</h1>
+
+  <div
+    class="bg-yellow-600 bg-opacity-20 border border-yellow-500 text-yellow-300 rounded-md p-4 mb-6"
+  >
+    <p class="mb-2">
+      ¿Estás seguro de que quieres eliminar el tipo de comercio
+      <strong class="text-yellow-300"><%= tipoComercio.nombre %></strong>?
+    </p>
+    <p>
+      Este tipo tiene
+      <strong class="text-yellow-300"><%= cantidadComercios %></strong>
+      comercios asociados y serán eliminados.
+    </p>
+  </div>
+
+  <form
+    action="/admin/tipos-comercios/eliminar/<%= tipoComercio.id %>"
+    method="POST"
+  >
+    <button
+      type="submit"
+      class="bg-red-700 hover:bg-red-800 transition-colors duration-300 px-6 py-3 rounded-lg shadow text-white font-semibold flex items-center gap-2"
+    >
+      <i class="fa fa-trash"></i> Confirmar eliminación
+    </button>
+    <a
+      href="/admin/tipos-comercios"
+      class="inline-block ml-4 bg-gray-700 hover:bg-gray-600 transition-colors duration-300 px-6 py-3 rounded-lg shadow text-white font-semibold"
+    >
+      Cancelar
+    </a>
+  </form>
+</div>

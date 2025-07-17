@@ -1,0 +1,175 @@
+<div class="flex justify-center items-center min-h-screen bg-kuretake px-4">
+  <div
+    class="w-full max-w-3xl bg-benthic/70 text-white rounded-2xl shadow-2xl p-10 backdrop-blur-lg border border-petrel/20"
+  >
+    <h2 class="text-4xl font-bold text-petrel text-center mb-8">
+      Registro de comercio
+    </h2>
+    <form
+      action="/auth/registro-comercio"
+      method="POST"
+      enctype="multipart/form-data"
+      class="space-y-6"
+    >
+      <div>
+        <label
+          for="nombre"
+          class="block text-sm font-medium mb-1"
+          >Nombre del comercio</label
+        >
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          required
+          class="w-full px-4 py-3 rounded-xl bg-kuretake/50 text-white placeholder-gray-400 border-2 border-petrel/40 focus:ring-2 focus:ring-petrel focus:border-petrel backdrop-blur-sm outline-none transition"
+        />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label
+            for="telefono"
+            class="block text-sm font-medium mb-1"
+            >Teléfono</label
+          >
+          <input
+            type="text"
+            id="telefono"
+            name="telefono"
+            required
+            class="w-full px-4 py-3 rounded-xl bg-kuretake/50 text-white placeholder-gray-400 border-2 border-petrel/40 focus:ring-2 focus:ring-petrel focus:border-petrel backdrop-blur-sm outline-none transition"
+          />
+        </div>
+        <div>
+          <label
+            for="correo"
+            class="block text-sm font-medium mb-1"
+            >Correo electrónico</label
+          >
+          <input
+            type="email"
+            id="correo"
+            name="correo"
+            required
+            class="w-full px-4 py-3 rounded-xl bg-kuretake/50 text-white placeholder-gray-400 border-2 border-petrel/40 focus:ring-2 focus:ring-petrel focus:border-petrel backdrop-blur-sm outline-none transition"
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label
+            for="horaApertura"
+            class="block text-sm font-medium mb-1"
+            >Hora de apertura</label
+          >
+          <input
+            type="time"
+            id="horaApertura"
+            name="horaApertura"
+            required
+            class="w-full px-4 py-3 rounded-xl bg-kuretake/50 text-white border-2 border-petrel/40 focus:ring-2 focus:ring-petrel focus:border-petrel backdrop-blur-sm outline-none transition"
+          />
+        </div>
+        <div>
+          <label
+            for="horaCierre"
+            class="block text-sm font-medium mb-1"
+            >Hora de cierre</label
+          >
+          <input
+            type="time"
+            id="horaCierre"
+            name="horaCierre"
+            required
+            class="w-full px-4 py-3 rounded-xl bg-kuretake/50 text-white border-2 border-petrel/40 focus:ring-2 focus:ring-petrel focus:border-petrel backdrop-blur-sm outline-none transition"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label
+          for="tipoComercioId"
+          class="block text-sm font-medium mb-1"
+          >Tipo de comercio</label
+        >
+        <select
+          id="tipoComercioId"
+          name="tipoComercioId"
+          required
+          class="w-full px-4 py-3 rounded-xl bg-kuretake/50 text-white border-2 border-petrel/40 focus:ring-2 focus:ring-petrel focus:border-petrel backdrop-blur-sm outline-none transition"
+        >
+          <option value="">Seleccione un tipo</option>
+          <% tiposComercio.forEach(tipo => { %>
+          <option value="<%= tipo.id %>"><%= tipo.nombre %></option>
+          <% }); %>
+        </select>
+      </div>
+
+      <div>
+        <label
+          for="logo"
+          class="block text-sm font-medium mb-1"
+          >Logo del comercio</label
+        >
+        <input
+          type="file"
+          id="logo"
+          name="logo"
+          required
+          class="w-full px-4 py-3 rounded-xl bg-kuretake/50 text-white file:bg-petrel file:text-white file:border-0 file:rounded-md file:px-4 file:py-2 border-2 border-petrel/40 focus:ring-2 focus:ring-petrel focus:border-petrel backdrop-blur-sm outline-none transition"
+        />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label
+            for="password"
+            class="block text-sm font-medium mb-1"
+            >Contraseña</label
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            class="w-full px-4 py-3 rounded-xl bg-kuretake/50 text-white placeholder-gray-400 border-2 border-petrel/40 focus:ring-2 focus:ring-petrel focus:border-petrel backdrop-blur-sm outline-none transition"
+          />
+        </div>
+        <div>
+          <label
+            for="confirmarPassword"
+            class="block text-sm font-medium mb-1"
+            >Confirmar contraseña</label
+          >
+          <input
+            type="password"
+            id="confirmarPassword"
+            name="confirmarPassword"
+            required
+            class="w-full px-4 py-3 rounded-xl bg-kuretake/50 text-white placeholder-gray-400 border-2 border-petrel/40 focus:ring-2 focus:ring-petrel focus:border-petrel backdrop-blur-sm outline-none transition"
+          />
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full py-3 bg-petrel text-white font-semibold rounded-xl hover:bg-bluedart transition text-lg"
+      >
+        Registrar comercio
+      </button>
+    </form>
+
+    <div class="mt-6 text-center text-sm text-gray-300">
+      <p>
+        ¿Ya tienes una cuenta?
+        <a
+          href="/auth/login"
+          class="text-petrel hover:underline"
+          >Iniciar sesión</a
+        >
+      </p>
+    </div>
+  </div>
+</div>
