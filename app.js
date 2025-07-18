@@ -102,15 +102,6 @@ app.use((err, req, res, next) => {
   res.status(500).render("error/500");
 });
 
-const jsonData = fs.readFileSync("./usurios.json", "utf8");
-crearTiposComercioYComercios(jsonData, TipoComercio, Comercio)
-  .then(({ tiposCreados, comerciosCreados }) => {
-    console.log("Proceso completado exitosamente");
-  })
-  .catch((error) => {
-    console.error("Error en el proceso:", error);
-  });
-
 sequelize
   .sync({ force: false })
   .then(() => {
@@ -118,7 +109,6 @@ sequelize
       console.log(`Server running on http://localhost:${PORT}`);
       console.log(`Opening browser...`);
       open(`http://localhost:${PORT}`);
-      await crearTiposComercioYComercios(jsonData);
     });
   })
   .catch((err) => {
