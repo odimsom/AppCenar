@@ -11,7 +11,7 @@
 
   <div class="bg-benthic rounded-xl shadow-lg overflow-hidden">
     <div class="p-6">
-      <% if (pedidos && pedidos.length > 0) { %>
+      <% if (pedidos && pedidos.length> 0) { %>
       <div class="overflow-auto rounded-lg">
         <table class="w-full text-sm text-left text-gray-300">
           <thead class="bg-petrel text-white uppercase text-xs">
@@ -55,7 +55,7 @@
             </tr>
           </thead>
           <tbody>
-            <% pedidos.forEach(pedido => { %>
+            <% pedidos.forEach(pedido=> { %>
             <tr class="border-b border-gray-700 hover:bg-gray-800 transition">
               <td class="px-6 py-4"><%= pedido.id %></td>
               <td class="px-6 py-4 font-medium text-white">
