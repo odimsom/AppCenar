@@ -12,11 +12,13 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// URL base de la app desplegada
+const BASE_URL = process.env.BASE_URL || "https://appcenar.onrender.com";
+
 // Función para enviar correo de activación
 export const enviarCorreoActivacion = async (correo, token, rol) => {
   try {
-    const baseUrl = process.env.BASE_URL || "http://localhost:4000";
-    const activationUrl = `${baseUrl}/auth/activar/${token}`;
+    const activationUrl = `${BASE_URL}/auth/activar/${token}`;
 
     const mailOptions = {
       from: process.env.EMAIL_USER || "borrome941@gmail.com",
@@ -46,8 +48,7 @@ export const enviarCorreoActivacion = async (correo, token, rol) => {
 // Función para enviar correo de recuperación de contraseña
 export const enviarCorreoRecuperacion = async (correo, token) => {
   try {
-    const baseUrl = process.env.BASE_URL || "http://localhost:3000";
-    const resetUrl = `${baseUrl}/auth/reset-password/${token}`;
+    const resetUrl = `${BASE_URL}/auth/reset-password/${token}`;
 
     const mailOptions = {
       from: process.env.EMAIL_USER || "borrome941@gmail.com",
